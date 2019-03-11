@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+*.db
+.DS_Store
+.coverage
+local_settings.py
+/static
+clean_blog/
+.idea/workspace.xml
+/clean_blog/
+.idea/

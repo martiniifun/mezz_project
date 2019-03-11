@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+  <title>
+    {% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+  <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+  {% ifinstalled mezzanine.blog %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+  {% endifinstalled %}
+
+  {% compress css %}
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/clean-blog.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/custom.css" %}" rel="stylesheet">
+
+
+    {% if LANGUAGE_BIDI %}
+      <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+    {% endif %}
+    {% ifinstalled cartridge.shop %}
+      <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+      {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+      {% endif %}
+    {% endifinstalled %}
+    {% block extra_css %}{% endblock %}
+  {% endcompress %}
+
+  {% compress js %}
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+    {% block extra_js %}{% endblock %}
+  {% endcompress %}
+
+  <!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+  {% block extra_head %}{% endblock %}
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1964514722158963",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    {% block navbar_title %}
+      {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+      {% if settings.SITE_TAGLINE %}<p class="navbar-text d-none">{{ settings.SITE_TAGLINE }}</p>
+      {% endif %}
+    {% endblock %}
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      {% page_menu "pages/menus/primary.html" %}
+    </div>
+  </div>
+</nav>
+
+{% block page_header %}
+{% endblock %}
+
+{% block blogpost_hero %}
+{% endblock %}
+
+
+{% if request.path == '/' %}
+  <header class="masthead" style="background-image: url('{{ STATIC_URL }}img/post-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Martinii's TechBlog</h1>
+            <span class="subheading">shares helpful Python & Django tutorials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% block main %}{% endblock %}
+    </div>
+  </div>
+</div>
+<hr>
+
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="https://twitter.com/martinii_fun" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/martinii.fun" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/martiniifun/" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Martinii Fun TechBlog Website 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% block footer_js %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static "js/clean-blog.min.js" %}"></script>
+  <script src="{% static "js/retina.js" %}"></script>
+  {% include "includes/footer_scripts.html" %}
+{% endblock %}
+
+</body>
+</html>
