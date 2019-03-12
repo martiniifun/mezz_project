@@ -9,3 +9,4 @@ clean_blog/
 .idea/workspace.xml
 /clean_blog/
 .idea/
+venv/
