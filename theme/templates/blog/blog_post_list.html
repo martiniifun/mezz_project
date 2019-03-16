@@ -89,7 +89,9 @@
       <p class="post-subtitle">
         {% block blog_post_list_post_content %}
           {% editable blog_post.content %}
-            {{ blog_post.description_from_content|safe|truncatewords:50 }}
+            <a href="{{ blog_post.get_absolute_url }}">
+              {{ blog_post.description_from_content|safe|truncatewords:50 }}
+            </a>
           {% endeditable %}
         {% endblock %}
       </p>
