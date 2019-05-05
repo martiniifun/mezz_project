@@ -36,6 +36,7 @@
   <title>
     {% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
   <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+  <link rel="stylesheet" href="{% static 'prism/prism.css' %}"/>
 
   {% ifinstalled mezzanine.blog %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
@@ -196,6 +197,6 @@
   <script src="{% static "js/retina.js" %}"></script>
   {% include "includes/footer_scripts.html" %}
 {% endblock %}
-
+<script src="{% static 'prism/prism.js' %}"></script>
 </body>
 </html>
