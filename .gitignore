@@ -10,3 +10,4 @@ clean_blog/
 /clean_blog/
 .idea/
 venv/
+/myvenv/

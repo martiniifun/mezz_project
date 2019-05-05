@@ -351,3 +351,4 @@ else:
 # BLOG_SLUG = "" # for blog-only site setting
 FORMS_USE_HTML5 = True
 COMMENTS_USE_RATINGS = False
+TINYMCE_SETUP_JS = 'tinymce_setup.js'
