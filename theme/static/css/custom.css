@@ -24,3 +24,6 @@ form.mezzanine-form input, form.mezzanine-form textarea {
     border-bottom: 3px solid black;
 }
 
+.post-preview>a>.post-title {
+    font-size: 2rem;
+}
